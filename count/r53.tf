@@ -1,5 +1,5 @@
 resource "aws_route53_record" "www" {
-    count = 10 
+    for_each = aws_instance.example # this will create an A record for each instance in the list with the name of the instance and the domain name
     zone_id = var.zone_id
     # interpolation 
     name = "${var.instances[count.index]}.${var.domain_name}" # this will create A record for each instance in the list with the name of the instance and the domain name
